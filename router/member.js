@@ -35,7 +35,7 @@ router.post('/verify',(req,res)=>{
             if(results.lenght==0)
                 res.render('member/login',{msg: 'Wrog Username or Password'})
             else{
-                res.render('member/home')
+                res.render('member/member')
             }
         }
     })
