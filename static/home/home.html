@@ -1,10 +1,12 @@
+<?php include('index.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Group</title>
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="layout">
@@ -16,7 +18,8 @@
             <div class="side-nav">
                 <!-- <button id="login" > -->
                     <div class="user">
-                        <a href="http://127.0.0.1:5500/login.html"><img src="img/7309681.jpg" class="user-img"></a>
+                        <a href="/member/login">
+                            <img src="img/7309681.jpg" class="user-img"></a>
                           
                         
                         <div>
@@ -43,7 +46,10 @@
                 
                 </ul>
                 <ul>
-                    <li><img src="img/logout.png"><p>Logout</p></li>                
+                    <form action="/static/home/home.html">
+                        <li><img src="img/logout.png"><p>Logout</p></li>
+                    </form>
+                  
                 </ul>
             </div>     
         </div>        
