@@ -1,11 +1,7 @@
 const express = require('express');
-const path = require('path');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const mustacheExpress = require('mustache-express');
 const router = express.Router();
-const app = express();
-const PORT = 3000;
 
 
 router.use(bodyParser.urlencoded({ extended: true}));
@@ -35,7 +31,7 @@ router.post('/verify',(req,res)=>{
             if(results.lenght==0)
                 res.render('member/login',{msg: 'Wrog Username or Password'})
             else{
-                res.render('member/member')
+                res.render('member/home')
             }
         }
     })

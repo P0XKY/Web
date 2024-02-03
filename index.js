@@ -49,6 +49,8 @@ app.post('/register',(req,res)=>{
     pool.query(sql,[user_id,user_name,user_passwork,user_email],(err,results)=>{
         if(err){
             return res.status(500).json({error: err.message});
+        }else{
+            res.render('member/home')
         }
         // res.json({id: results.insertId});
     });
