@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop File Upload</title>
-    <link rel="stylesheet" href="/Upload1/upload.css">
+    <link rel="stylesheet" href="./upload.css">
+    <title>Simple Social Media</title>
 </head>
 <body>
     <nav>
-        <div class="con">
+        <div class="conta">
             <div class="nav-con">
             <div class="logo">
                 <a href="#">CPE</a>
@@ -23,31 +23,32 @@
         </div>
     </nav>
 
+
     <div class="container">
-        <div class="header-section">
-            <h1>Upload Files</h1>
-            <p>Upload files you want to share with your team members.</p>
-            <p>PDF</p>
-        </div>
-        <div class="drop-section">
-            <div class="col">
-                <div class="cloud-icon">
-                    <img src="./icons/cloud.png" alt="cloud">
-                </div>
-                <span>Drag & Drop your files here</span>
-                <span>OR</span>
-                <button class="file-selector">Browse Files</button>
-                <input type="file" class="file-selector-input" multiple>
+        <div id="posts-container"></div>
+
+        <form id="post-form">
+            <label for="post-title">หัวข้อ:</label>
+            <input type="text" id="post-title" placeholder="กรุณาใส่หัวข้อ">
+
+            <label for="post-text">รายระเอียด:</label>
+            <textarea id="post-text" rows="4" cols="50" placeholder="กรุณาใส่รายระเอียด"></textarea>
+
+            <div class="upload">
+                <label for="file-upload">อัพโหลดไฟล์ PDF:</label>
+                <div class="upload-button" onclick="document.getElementById('file-upload').click()">เลือกไฟล์</div>
+                <input type="file" id="file-upload" accept=".pdf"> 
             </div>
-            <div class="col">
-                <div class="drop-here">Drop Here</div>
+            <!-- ปุ่มแสดงชื่อไฟล์ที่ถูกเลือก -->
+            <div class="file-name" id="file-name"></div>
+
+            <div class="post">
+                <button type="button" onclick="createPost()">โพสต์</button>
             </div>
-        </div>
-        <div class="list-section">
-            <div class="list-title">Uploaded Files</div>
-            <div class="list"></div>
-        </div>
+            
+        </form>
     </div>
-<script src="script.js"></script>
+
+    <script src="./script.js"></script>
 </body>
 </html>

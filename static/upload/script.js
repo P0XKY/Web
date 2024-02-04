@@ -1,103 +1,73 @@
-const dropArea = document.querySelector('.drop-section')
-const listSection = document.querySelector('.list-section')
-const listContainer = document.querySelector('.list')
-const fileSelector = document.querySelector('.file-selector')
-const fileSelectorInput = document.querySelector('.file-selector-input')
+// ฟังก์ชันสำหรับแสดงชื่อไฟล์ที่ถูกเลือก
+function displayFileName() {
+    const fileUpload = document.getElementById('file-upload');
+    const fileNameDisplay = document.getElementById('file-name');
 
-// upload files with browse button
-fileSelector.onclick = () => fileSelectorInput.click()
-fileSelectorInput.onchange = () => {
-    [...fileSelectorInput.files].forEach((file) => {
-        if(typeValidation(file.type)){
-            uploadFile(file)
+    // ตรวจสอบว่ามีไฟล์ถูกเลือกหรือไม่
+    if (fileUpload.files.length > 0) {
+        const fileName = fileUpload.files[0].name;
+        fileNameDisplay.textContent = `ไฟล์ที่เลือก: ${fileName}`;
+        fileNameDisplay.style.display = 'block'; // แสดงชื่อไฟล์
+    } else {
+        fileNameDisplay.textContent = ''; // ล้างข้อความถ้าไม่มีไฟล์
+        fileNameDisplay.style.display = 'none';
+    }
+}
+
+// เพิ่มการเรียกใช้ฟังก์ชัน displayFileName() เมื่อมีการเปลี่ยนแปลงใน input file
+document.getElementById('file-upload').addEventListener('change', displayFileName);
+
+// ฟังก์ชันสำหรับการโพสต์
+function createPost() {
+    const postTitle = document.getElementById('post-title').value;
+    const postText = document.getElementById('post-text').value;
+    const fileInput = document.getElementById('file-upload');
+    const file = fileInput.files[0];
+
+    // ตรวจสอบว่ามีข้อมูลหรือไม่
+    if (postTitle.trim() !== '' || postText.trim() !== '' || file) {
+        const postsContainer = document.getElementById('posts-container');
+
+        // สร้าง div สำหรับโพสต์ใหม่
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+
+        // เพิ่มหัวข้อ
+        if (postTitle.trim() !== '') {
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = postTitle;
+            postDiv.appendChild(titleElement);
         }
-    })
-}
 
-// check the file type
-function typeValidation(type){
-    return type === 'application/pdf';
-}
-
-// when file is over the drag area
-dropArea.ondragover = (e) => {
-    e.preventDefault();
-    [...e.dataTransfer.items].forEach((item) => {
-        if(typeValidation(item.type)){
-            dropArea.classList.add('drag-over-effect')
+        // เพิ่มรายระเอียด
+        if (postText.trim() !== '') {
+            const postContent = document.createElement('p');
+            postContent.textContent = postText;
+            postDiv.appendChild(postContent);
         }
-    })
-}
-// when file leave the drag area
-dropArea.ondragleave = () => {
-    dropArea.classList.remove('drag-over-effect')
-}
-// when file drop on the drag area
-dropArea.ondrop = (e) => {
-    e.preventDefault();
-    dropArea.classList.remove('drag-over-effect')
-    if(e.dataTransfer.items){
-        [...e.dataTransfer.items].forEach((item) => {
-            if(item.kind === 'file'){
-                const file = item.getAsFile();
-                if(typeValidation(file.type)){
-                    uploadFile(file)
-                }
-            }
-        })
-    }else{
-        [...e.dataTransfer.files].forEach((file) => {
-            if(typeValidation(file.type)){
-                uploadFile(file)
-            }
-        })
-    }
-}
 
-// upload file function
-function uploadFile(file){
-    listSection.style.display = 'block'
-    var li = document.createElement('li')
-    li.classList.add('in-prog')
-    li.innerHTML = `
-        <div class="col">
-            <img src="icons/${iconSelector(file.type)}" alt="">
-        </div>
-        <div class="col">
-            <div class="file-name">
-                <div class="name">${file.name}</div>
-                <span>0%</span>
-            </div>
-            <div class="file-progress">
-                <span></span>
-            </div>
-            <div class="file-size">${(file.size/(1024*1024)).toFixed(2)} MB</div>
-        </div>
-        <div class="col">
-            <svg xmlns="http://www.w3.org/2000/svg" class="cross" height="20" width="20"><path d="m5.979 14.917-.854-.896 4-4.021-4-4.062.854-.896 4.042 4.062 4-4.062.854.896-4 4.062 4 4.021-.854.896-4-4.063Z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="tick" height="20" width="20"><path d="m8.229 14.438-3.896-3.917 1.438-1.438 2.458 2.459 6-6L15.667 7Z"/></svg>
-        </div>
-    `
-    listContainer.prepend(li)
-    var http = new XMLHttpRequest()
-    var data = new FormData()
-    data.append('file', file)
-    http.onload = () => {
-        li.classList.add('complete')
-        li.classList.remove('in-prog')
+        // เพิ่มลิงก์ไฟล์ถ้ามีไฟล์
+        if (file) {
+            const fileName = file.name;
+            const fileLinkElement = document.createElement('a');
+            fileLinkElement.href = URL.createObjectURL(file);
+            fileLinkElement.download = fileName;
+            fileLinkElement.textContent = `ดาวน์โหลดไฟล์: ${fileName}`;
+            postDiv.appendChild(fileLinkElement);
+        }
+
+        // เพิ่มโพสต์ลงใน container
+        postsContainer.appendChild(postDiv);
+
+        // ล้างค่า input fields และ file input หลังจากโพสต์
+        document.getElementById('post-title').value = '';
+        document.getElementById('post-text').value = '';
+        fileInput.value = null;
+
+        // ล้างแสดงชื่อไฟล์
+        displayFileName();
+
+        // เปลี่ยน URL ไปยังหน้าอื่น
+        window.location.href = 'ตำแหน่งหน้าที่คุณต้องการ';
     }
-    http.upload.onprogress = (e) => {
-        var percent_complete = (e.loaded / e.total)*100
-        li.querySelectorAll('span')[0].innerHTML = Math.round(percent_complete) + '%'
-        li.querySelectorAll('span')[1].style.width = percent_complete + '%'
-    }
-    http.open('POST', 'sender.php', true)
-    http.send(data)
-    li.querySelector('.cross').onclick = () => http.abort()
-    http.onabort = () => li.remove()
-}
-// find icon for file
-function iconSelector(type){
-    var splitType = (type.split('/')[0] == 'application') ? type.split('/')[1] : type.split('/')[0];
-    return splitType + '.png'
 }

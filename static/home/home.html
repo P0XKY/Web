@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     
     <nav>
-        <div class="container">
+        <div class="conta">
             <div class="nav-con">
             <div class="logo">
                 <a href="#">CPE</a>
@@ -25,7 +25,21 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <div class="header">
+        <h1>โพสต์ที่คนลง</h1>
+    </div>
+
+    <div class="container" id="posts-container">
+        <!-- โพสต์จะถูกเพิ่มที่นี่ -->
+    </div>
+
+    <div class="footer">
+        <button id="load-more" onclick="loadMorePosts()">Load More</button>
+    </div>
+
+   
+
+    <!-- <section class="hero">
         <div class="container">
             <div class="hero-con">
                 <form action="" class="search-bar">
@@ -34,7 +48,8 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
+     <script src="home.js"></script>
 </body>
 </html>
