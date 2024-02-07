@@ -3,53 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>แสดงข้อมูล</title>
+    <link rel="stylesheet" href="style.css">
+    
 
-    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <header>
+        <div class="head">
+            <div class="logo">Clude</div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href=""><img src="https://cdn.icon-icons.com/icons2/1744/PNG/512/3643769-building-home-house-main-menu-start_113416.png" alt="">home</a></li>
+                    <li><a href=""><img src="https://cdn.icon-icons.com/icons2/1946/PNG/96/1904675-configuration-edit-gear-options-preferences-setting-settings_122525.png" alt="">setting</a></li>
+                    <li><a href=""><img src="https://cdn.icon-icons.com/icons2/3237/PNG/512/tool_social_media_edit_edit_post_aplication_icon_197319.png" alt=""> post</a></li>
+                    <li><a href="">....</a></li>
+                </ul>
+            </div>
+
+            <div class="profile">
+                <img src="path/to/your/profile/image.jpg" alt="Profile Image">  <!-- Replace with actual image path --></div>
+                <!-- ต้องแก้ -->
+        </div>
+    </header>
     
-    <nav>
-        <div class="conta">
-            <div class="nav-con">
-            <div class="logo">
-                <a href="#">CPE</a>
-            </div>
-            <ul class="menu">
-                    <li><a href="/member/login"><img src="../../img/home.jpg"=></a><a href="#"><p>Home</p></a></li>
-                    <li><a href="https://www.youtube.com/"><img src="../../img/upload.jpg"=></a><a href="#"><p>Upload</p></a></li>
-                    <li><a href="https://www.youtube.com/"><img src="../../img/setting.jpg"=></a><a href="#"><p>Setting</p></a></li>
-                    <li><a href="https://www.youtube.com/"><img src="../../img/setting.png"=></a><a href="#"><p>login</p></a></li>  
-            </ul>
-            </div>
+    <div class="search">
+        <input type="text" placeholder="ค้นหา...">
+    </div>
+
+    <div class="container">
+        <div id="post-container">
+            <!-- ที่นี่จะแสดงข้อมูลโพส -->
         </div>
-    </nav>
-
-    <div class="header">
-        <h1>โพสต์ที่คนลง</h1>
     </div>
-
-    <div class="container" id="posts-container">
-        <!-- โพสต์จะถูกเพิ่มที่นี่ -->
-    </div>
-
-    <div class="footer">
-        <button id="load-more" onclick="loadMorePosts()">Load More</button>
-    </div>
-
-   
-
-    <!-- <section class="hero">
-        <div class="container">
-            <div class="hero-con">
-                <form action="" class="search-bar">
-                    <input type="text" placeholder="search project" name = "q">
-                    <button type="submit"><img src="img/search.png" ></button>
-                </form>
-            </div>
-        </div>
-    </section> -->
-
-     <script src="home.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

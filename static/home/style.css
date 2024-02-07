@@ -2,147 +2,101 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #fdfdfd;
 }
-.conta {
-    max-width: 1140px;
-    margin: 0 auto;
-}
-/* แถบบน */
-nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-.nav-con {
+
+/* ต้องบนทั้งหมด */
+.head {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px; 
+    background-color: rgb(155, 86, 245);
+    color: #fff;
+}
+.logo {
+    font-family: Impact, fantasy;
+    font-size: 50px;
 }
 
-.logo a {
-    font-size: 3rem;
-    color: #fff;
-    text-decoration: none;
-}
 .menu {
     display: flex;
-    list-style: none;
+}
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    gap: 60px; 
+    text-decoration: none;
+    font-size: 20px;
+}
+.menu ul li a {
+    
+    text-decoration: none; /* ลบเส้นใต้ของลิงก์ */
+}
+.profile {
     align-items: center;
 }
-
-.menu li {
-    margin: 0 1rem;
+.profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+    margin-right: 5px;
 }
-
-.menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
+.menu img {
+    width: 30px;
+    height: 30px;
 }
+/* ถึงนี่ */
 
-
-
-/* กล่องโฟสที่คนโพส */
-.header {
-    margin: 0 auto;
-    background-color: #808a9c;
-    color: white;
-    padding: 10px;
+.search {
     text-align: center;
-    font-size: 15px;
-    max-width: 1500px;
-    margin-top: 1rem;
-    justify-content: center;
-    border-radius: 15px;
+    margin-top: 50px;
 }
+.search input {
+    width: 500px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+
 .container {
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: #fff;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .post {
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
+    padding: 20px;
     margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
 }
-
-.footer {
-    text-align: center;
-    padding: 10px;
-}
-
-#load-more {
-    background-color: #5d78ad;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-#load-more:hover {
-    background-color: #365899;
-}
-/* box1 */
-/********************* search bar ****************************/
-/* .hero-con {
-    padding: 20rem;   
-}
-.search-bar{
-    width: 100%;
-    max-width: 700px;
-    background: rgba(23, 0, 231, 0.2);
-    display: flex;
-    align-items: center;
-    border-radius: 60px;
-    padding: 10px 20px;
-    backdrop-filter: blur(4px) saturate(180%);
-    
-}
-.search-bar input {
-    background: transparent;
-    flex: 1;
-    border: 0;
-    outline: none;
-    padding: 24px 20px;
-    font-size: 20px;
-    color: #000000;
-    /* border: 1px solid red;     */
-/* }
-::placeholder{
-    color: #7471a3;
-}
-.search-bar button img {
-    width: 25px;
-}
-
-.search-bar button{
-    border: 0;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    background: #6577dd;
-    cursor: pointer;
-}
-
-
-
-.hero-img {
-    padding: 2rem;
+.post p {
+    /* border: 1px solid red; */
     width: 100%;
 }
+  
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20%; /* ใส่วงกลมให้รูปโปรไฟล์ */
+}
 
-/* box2 */
+#post-container {
+    margin-top: 0px;
+}
 
-/* footer */
-/* .footer-botton {
-    background-color: #fff;
-    padding: 1rem;
-    text-align: center;
-} */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
