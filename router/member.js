@@ -67,7 +67,7 @@ router.get('/logout',(req,res)=>{
 
 // Upload Post
 router.get('/upload',(req,res)=>{
-    res.render('upload/upload')
+    res.render('member/upload')
 });
 
 // Setting
