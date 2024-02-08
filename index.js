@@ -34,19 +34,13 @@ app.use('/member',memberRouters);
 
 
 // Home
-app.get('/',(req,res)=>{
+app.get('/', async (req,res)=>{
     const sql = 'SELECT * FROM post'
-     dbConection.query(sql,(error,result,fields)=>{
+    dbConection.query(sql,(error,result,fields)=>{
         if(error){
             console.error(error);
         }else{
-            
-            section = result[0].section
-            Description = result[0].Description
-            times = result[0].times
-            
-            
-            res.render('home/home',{'section': section,Description,times})
+            res.render('home/home',{ posts: result })
         } 
     });
 });

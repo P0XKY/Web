@@ -31,9 +31,15 @@
 
     <div class="container">
         <div id="post-container">
-            {{section}} {{Description}} {{times}}
-
-
+        
+       {{#posts}}
+        
+            {{section}}
+            {{Description}}
+            {{times}}
+            <br>
+       {{/posts}}
+       
         </div>
     </div>
     <script src="home.js"></script>
