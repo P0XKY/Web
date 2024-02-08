@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* ต้องบนทั้งหมด */
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; 
+    background-color: rgb(155, 86, 245);
+    color: #fff;
+}
+.logo {
+    font-family: Impact, fantasy;
+    font-size: 50px;
+}
+
+.menu {
+    display: flex;
+}
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    gap: 60px; 
+    text-decoration: none;
+    font-size: 20px;
+}
+.menu ul li a {
+    
+    text-decoration: none; /* ลบเส้นใต้ของลิงก์ */
+}
+.profile {
+    align-items: center;
+}
+.profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+    margin-right: 5px;
+}
+.menu img {
+    width: 30px;
+    height: 30px;
+}
+
+/* ถึงตรงนี้ */
+
+
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.container img {
+    height: 50px;
+    width: 50px;
+}
+form {
+    font-size: 20px;
+}
+form img {
+    height: 30px;
+    display: flex;
+}
+.upload-file {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#file-upload {
+    display: none;
+}
+#post-title {
+    border: 1px solid rgb(17, 0, 255);
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+}
+#post-details {
+    border: 1px solid #b700ff;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 96%;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#file-name {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+textarea {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #05b8ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007d8d;
+}
