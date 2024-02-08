@@ -6,6 +6,7 @@ const cookieSession = require('cookie-session');
 const {body,validationResult} = require('express-validator');
 const cookie = require('cookie-parser')
 
+// use cookie
 router.use(cookie());
 
 
@@ -17,22 +18,18 @@ router.get('/login',(req,res)=>{
     res.render('member/login')
 });
 
-// home.mustache
+// member/home
 router.post('/verify',(req,res)=>{
     const {user_name,user_passwork,user_email} = req.body
     const sql = "SELECT * FROM users WHERE user_name = ?  and user_passwork = ? "
     dbConection.query(sql,[user_name,user_passwork,user_email],(err,results)=>{
         if(err){
             console.log(err)
-            res.render('member/login')
-                
+            res.render('member/login')     
         }else{
             if(results.length == 0){
-                
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
-
             }else{
-                
                 res.cookie('user_name',user_name,{maxAge: 60000})
                 res.render('member/home',{user_name,user_email})
                 
@@ -50,9 +47,7 @@ router.get('/member',(req,res)=>{
     }
     else {
         res.redirect('/member/login')
-        
-    }
-    
+    } 
 });
 
 
@@ -74,6 +69,10 @@ router.get('/upload',(req,res)=>{
 router.get('/setting',(req,res)=>{
     res.send('Hello')
     //res.render('upload/upload')
+})
+
+router.get('/post',(req,res)=>{
+    
 })
 
 module.exports = router;

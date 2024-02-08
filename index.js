@@ -19,19 +19,37 @@ app.use(bodyParser.json());
 let root_path = path.resolve(__dirname,'static')
 app.use(express.static(root_path));
 
-//router
+// router
 const registerRouters = require('./router/register');
 const memberRouters = require('./router/member');
 
-//use router
+// connect database
+const dbConection = require('./database');
+const { error, time } = require('console');
+const { Result } = require('express-validator');
+
+// use router
 app.use('/register',registerRouters);
 app.use('/member',memberRouters);
 
 
 // Home
 app.get('/',(req,res)=>{
-    res.render('home/home')
-})
+    const sql = 'SELECT * FROM post'
+     dbConection.query(sql,(error,result,fields)=>{
+        if(error){
+            console.error(error);
+        }else{
+            
+            section = result[0].section
+            Description = result[0].Description
+            times = result[0].times
+            
+            
+            res.render('home/home',{'section': section,Description,times})
+        } 
+    });
+});
 
 
 
