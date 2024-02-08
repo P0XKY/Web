@@ -8,34 +8,16 @@ const cookie = require('cookie-parser')
 
 router.use(cookie());
 
-router.use(cookieSession({
-    name: 'session',
-    keys: ['key1','key2'],
-    maxAge: 3600 * 1000
-}))
-
-const ifNotLoggedIn = (req,res,next)=>{
-    if (!req.session.isLoggedIn){
-        return res.redirect('member/login');
-    }
-    next();
-}
-
-const ifLoggedIn = (req,res,next)=>{
-    if (req.session.isLoggedIn){
-        return res.redirect('/home');
-    }
-    next();
-}
 
 router.use(bodyParser.urlencoded({ extended: true}));
 router.use(bodyParser.json());
 
+//  Login.mustache
 router.get('/login',(req,res)=>{
     res.render('member/login')
 });
 
-
+// home.mustache
 router.post('/verify',(req,res)=>{
     const {user_name,user_passwork,user_email} = req.body
     const sql = "SELECT * FROM users WHERE user_name = ?  and user_passwork = ? "
@@ -59,6 +41,8 @@ router.post('/verify',(req,res)=>{
     });
 });
 
+
+// click home
 router.get('/member',(req,res)=>{
     const username = req.cookies.user_name;
     if (username){
@@ -71,16 +55,20 @@ router.get('/member',(req,res)=>{
     
 });
 
+
+// Logout
 router.get('/logout',(req,res)=>{
     const username = req.cookies.user_name;
     if (username){
         res.clearCookie('username')
     }
-    res.redirect('/home')
+    res.redirect('/')
 });
 
-// router.get('/home',(req,res)=>{
-//     res.render('member/home')
-// })
+// Upload Post
+router.get('/upload',(req,res)=>{
+    
+    res.render('upload/upload')
+})
 
 module.exports = router;
