@@ -1,73 +1,76 @@
-// ฟังก์ชันสำหรับแสดงชื่อไฟล์ที่ถูกเลือก
-function displayFileName() {
-    const fileUpload = document.getElementById('file-upload');
-    const fileNameDisplay = document.getElementById('file-name');
+// script.js สำหรับ post.html
+function submitPost() {
+    var postTitle = document.getElementById('post-title').value;
+    var postDetails = document.getElementById('post-details').value;
+    var fileInput = document.getElementById('file-upload');
+    
+    if (postTitle.trim() !== '' && postDetails.trim() !== '') {
+        // ดึงข้อมูลที่มีอยู่ใน local storage และเพิ่มข้อมูลใหม่
+        var posts = JSON.parse(localStorage.getItem('posts')) || [];
+        
+        // สร้างอ็อบเจ็กต์ข้อมูลโพส
+        var newPost = {
+            title: postTitle,
+            details: postDetails,
+            file: fileInput.files[0] || null  // ใช้ fileInput.files เพื่อเข้าถึงไฟล์ที่ผู้ใช้เลือก
+        };
 
-    // ตรวจสอบว่ามีไฟล์ถูกเลือกหรือไม่
-    if (fileUpload.files.length > 0) {
-        const fileName = fileUpload.files[0].name;
-        fileNameDisplay.textContent = `ไฟล์ที่เลือก: ${fileName}`;
-        fileNameDisplay.style.display = 'block'; // แสดงชื่อไฟล์
+        posts.push(newPost);
+        localStorage.setItem('posts', JSON.stringify(posts));
+
+        // ล้างค่า input
+        document.getElementById('post-title').value = '';
+        document.getElementById('post-details').value = '';
+        document.getElementById('file-upload').value = '';  // ล้างค่า input ไฟล์
     } else {
-        fileNameDisplay.textContent = ''; // ล้างข้อความถ้าไม่มีไฟล์
-        fileNameDisplay.style.display = 'none';
+        alert('กรุณากรอกหัวข้อและรายละเอียดของโพส');
+    }
+}
+// แสดงโพสต์ที่มีอยู่ใน Local Storage เมื่อหน้าเว็บโหลดเสร็จ
+document.addEventListener('DOMContentLoaded', function () {
+    displayPosts();
+});
+
+function displayFileName() {
+    const fileInput = document.getElementById("file-upload");
+    const fileNameDisplay = document.getElementById("file-name");
+
+    if (fileInput.files.length > 0) {
+        fileNameDisplay.innerText = "ชื่อไฟล์: " + fileInput.files[0].name;
+    } else {
+        fileNameDisplay.innerText = "";
     }
 }
 
-// เพิ่มการเรียกใช้ฟังก์ชัน displayFileName() เมื่อมีการเปลี่ยนแปลงใน input file
-document.getElementById('file-upload').addEventListener('change', displayFileName);
+function displayPosts() {
+    var posts = JSON.parse(localStorage.getItem('posts')) || [];
+    var postContainer = document.getElementById('post-container');
 
-// ฟังก์ชันสำหรับการโพสต์
-function createPost() {
-    const postTitle = document.getElementById('post-title').value;
-    const postText = document.getElementById('post-text').value;
-    const fileInput = document.getElementById('file-upload');
-    const file = fileInput.files[0];
+    // เคลียร์เนื้อหาที่อยู่ใน postContainer ก่อนที่จะแสดงข้อมูลใหม่
+    postContainer.innerHTML = '';
 
-    // ตรวจสอบว่ามีข้อมูลหรือไม่
-    if (postTitle.trim() !== '' || postText.trim() !== '' || file) {
-        const postsContainer = document.getElementById('posts-container');
+    posts.forEach(function (post) {
+        var postElement = document.createElement('div');
+        postElement.classList.add('post');
 
-        // สร้าง div สำหรับโพสต์ใหม่
-        const postDiv = document.createElement('div');
-        postDiv.className = 'post';
+        var titleElement = document.createElement('h2');
+        titleElement.textContent = post.title;
 
-        // เพิ่มหัวข้อ
-        if (postTitle.trim() !== '') {
-            const titleElement = document.createElement('h3');
-            titleElement.textContent = postTitle;
-            postDiv.appendChild(titleElement);
+        var detailsElement = document.createElement('p');
+        detailsElement.textContent = post.details;
+
+        // แสดงรายละเอียดของไฟล์ (ถ้ามี)
+        if (post.file) {
+            var fileElement = document.createElement('p');
+            fileElement.textContent = 'ไฟล์: ' + post.file.name;
+            postElement.appendChild(fileElement);
         }
 
-        // เพิ่มรายระเอียด
-        if (postText.trim() !== '') {
-            const postContent = document.createElement('p');
-            postContent.textContent = postText;
-            postDiv.appendChild(postContent);
-        }
+        // เพิ่ม element ลงใน postElement
+        postElement.appendChild(titleElement);
+        postElement.appendChild(detailsElement);
 
-        // เพิ่มลิงก์ไฟล์ถ้ามีไฟล์
-        if (file) {
-            const fileName = file.name;
-            const fileLinkElement = document.createElement('a');
-            fileLinkElement.href = URL.createObjectURL(file);
-            fileLinkElement.download = fileName;
-            fileLinkElement.textContent = `ดาวน์โหลดไฟล์: ${fileName}`;
-            postDiv.appendChild(fileLinkElement);
-        }
-
-        // เพิ่มโพสต์ลงใน container
-        postsContainer.appendChild(postDiv);
-
-        // ล้างค่า input fields และ file input หลังจากโพสต์
-        document.getElementById('post-title').value = '';
-        document.getElementById('post-text').value = '';
-        fileInput.value = null;
-
-        // ล้างแสดงชื่อไฟล์
-        displayFileName();
-
-        // เปลี่ยน URL ไปยังหน้าอื่น
-        window.location.href = 'ตำแหน่งหน้าที่คุณต้องการ';
-    }
+        // เพิ่ม postElement ลงใน postContainer
+        postContainer.appendChild(postElement);
+    });
 }
