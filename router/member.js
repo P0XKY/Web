@@ -69,6 +69,12 @@ router.get('/logout',(req,res)=>{
 router.get('/upload',(req,res)=>{
     
     res.render('upload/upload')
+});
+
+// Setting
+router.get('/setting',(req,res)=>{
+    res.send('Hello')
+    //res.render('upload/upload')
 })
 
 module.exports = router;
