@@ -31,9 +31,15 @@
     </header>
 
     <div class="container">
+
         <h1><img src="https://cdn.icon-icons.com/icons2/3237/PNG/512/tool_social_media_edit_edit_post_aplication_icon_197319.png" alt="สร้างโพสต์ ">สร้างโพสต์ </h1>
         <form action="/member/upload" method="post" id="post-form" enctype="multipart/form-data" >
             <label for="post-title"> หัวข้อ: </label>
+
+        <h1><img src="https://cdn.icon-icons.com/icons2/3237/PNG/512/tool_social_media_edit_edit_post_aplication_icon_197319.png">สร้างโพสต์ </h1>
+        <form id="post-form" enctype="multipart/form-data">
+            <label for="post-title">หัวข้อ:</label>
+
             <input type="text" id="post-title" required>
 
             <label for="post-details">รายละเอียด:</label>
@@ -41,7 +47,7 @@
 
             <div class="upload-file">
                 <label for="file-upload">
-                    <img src="https://cdn.icon-icons.com/icons2/627/PNG/96/pdf-file-outlined-interface-symbol_icon-icons.com_57528.png" alt="">
+                    <img src="https://cdn.icon-icons.com/icons2/627/PNG/96/pdf-file-outlined-interface-symbol_icon-icons.com_57528.png">
                     อัปโหลดไฟล์ PDF:
                 </label>
                 <input type="file" id="file-upload" accept=".pdf" onchange="displayFileName()">
