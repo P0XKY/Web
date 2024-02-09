@@ -5,6 +5,9 @@ const mustacheExpress = require('mustache-express')
 const app = express();
 const PORT = 3000;
 
+// connect database
+const dbConection = require('./database');
+
 // Mustache
 app.set('views',`${__dirname}/static`);
 app.set('view engine','mustache');
@@ -23,8 +26,7 @@ app.use(express.static(root_path));
 const registerRouters = require('./router/register');
 const memberRouters = require('./router/member');
 
-// connect database
-const dbConection = require('./database');
+
 
 
 const { error, time } = require('console');
@@ -36,17 +38,16 @@ app.use('/member',memberRouters);
 
 
 // Home
-app.get('/', async (req,res)=>{
-    const sql = 'SELECT * FROM posts'
+app.get('/',(req,res)=>{
+    let sql = 'SELECT * FROM posts'
     dbConection.query(sql,(error,result,fields)=>{
         if(error){
             console.error(error);
         }else{
-            res.render('home/home',{ posts: result })
+            res.render('home/home',{ posts: result });
         } 
     });
 });
-
 
 
 // Test

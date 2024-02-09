@@ -3,44 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แสดงข้อมูล</title>
-    <link rel="stylesheet" href="../css/style.css">
-    
-</head>
-<body>
-    <header>
-        <div class="head">
-            <div class="logo">Clude</div>
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-            <div class="menu">
-                <ul>
-                    <li><a href="/"><img src="https://cdn.icon-icons.com/icons2/1744/PNG/512/3643769-building-home-house-main-menu-start_113416.png" > home </a></li>
+</head>
+<body class="bg-dark">      
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark " >
+        <div class="container-fluid " >
+            <a href="#" class="navbar-brand" style="padding-left: 20px;">Group 7</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarToggle" >
+                <ul class="navbar-nav">
+                    <div class="search-box nav-item">
+                        <img src="img/search.png" style="width: 20px;">
+                        <input class="bg-secondary " type="text" placeholder=" Search">
+                    </div>
+                    <li class="nav-item"><a href="#" class="nav-link" >Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" >About</a></li>
+                    <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"
+                         data-bs-toggle="dropdown" >Setting</a>
+                        <ul class="dropdown-menu">
+                            <li ><a href="#" class="dropdown-item" >Post</a></li>
+                            <li ><a href="#" class="dropdown-item" >Profile</a></li>
+                        </ul>                         
+                    </li>
+                    <li class="nav-item"><a href="#" class="nav-link" >Login</a></li>
                 </ul>
             </div>
-
-            <div class="profile">
-                <a href="/member/login"><img src="path/to/your/profile/image.jpg" > Login <!-- Replace with actual image path --></a>
+     
+    </nav>
+    <div class="container-sm bg-secondary " style="height: 100% ;padding-top: 14px;">
+        <!-------------------------------------- POST --------------------------------------------------------------------- -->
+        {{#posts}}
+        <div class="post-container">
+            <div class="port-row" style="display: flex; justify-content: space-between;">
+                <div class="user-profile">
+                    <img src="img/user.jpg" alt="" >
+                    <div>
+                        <p>{{user_id}}</p>
+                        <span style="font-size: 13px; color: #9a9a9a;">{{times}}</span>
+                    </div>
+                </div>              
+                <a style="color: #9a9a9a;" href="#"><i class="fa-solid fa-ellipsis-v"></i></a>     
             </div>
-                <!-- ต้องแก้ -->
-        </div>
-    </header>
-    
-    <div class="search">
-        <input type="text" placeholder="ค้นหา...">
-    </div>
 
-    <div class="container">
-        <div id="post-container">
-        
-       {{#posts}}
-            {{section}}
-            {{content}}
-            {{times}}
-            <br>
-       {{/posts}}
-       
+            <p class="post-text">{{section}}<span>{{content}}</span> Thankyou. <a href="#">#ProjectCollect</a></p>     
+            <img src="img/feed-image-1.png" class="post-img">
+
+            <div class="post-row" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="activity-icons" style="display: flex;">
+                    <div><img src="img/like-blue.png"> 120</div>
+                    <div><img src="img/comments.png"> 45</div>
+                    <div><img src="img/share.png"> 20</div>
+                </div>
+                <div class="post-profile-icon">
+                    <img src="img/user.jpg"><i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>  
+        {{/posts}}   
+        {{! <!-- ---------------------------POST2------------------------------------------------------------------------ -->
+        <div class="post-container">
+            <div class="port-row" style="display: flex; justify-content: space-between;">
+                <div class="user-profile">
+                    <img src="img/member-1.png" alt="" >
+                    <div>
+                        <p>Alice Inthewanderland</p>
+                        <span style="font-size: 13px; color: #9a9a9a;">June 21 2024, 18:12 pm</span>
+                    </div>
+                </div>              
+                <a style="color: #9a9a9a;" href="#"><i class="fa-solid fa-ellipsis-v"></i></a>     
+            </div>
+
+            <p class="post-text">Welcome to my <span>@Project</span> Thankyou. <a href="#">#ProjectCollect</a></p>     
+            <img src="img/feed-image-2.png" class="post-img">
+
+            <div class="post-row" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="activity-icons" style="display: flex;">
+                    <div><img src="img/like-blue.png">2220</div>
+                    <div><img src="img/comments.png"> 145</div>
+                    <div><img src="img/share.png"> 203</div>
+                </div>
+                <div class="post-profile-icon">
+                    <img src="img/member-1.png"><i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>     
+    </div> }}
+
+   <!-- <div class="main-container-sm d-flex" style="margin-top: 56px;">
+        <div class="sidebar" id="side_nav">
+            <div class="header-box px-3 pt-3 pb-4">
+                <h1 class="fs-4"><span class="bg-white text-dark rounded shadow px- me-2">CL</span><span class="text-white">Coding League</span></h1>
+                <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="fa-solid fa-bars-staggered"></i></button>
+            </div>
+            <ul class="list-unstyled px-2">
+                <li class=""><a href="#" class="text-decoration-none">Dashboard</a></li>
+                <li class=""><a href="#" class="text-decoration-none">Dashboard</a></li>
+                <li class=""><a href="#" class="text-decoration-none">Dashboard</a></li>
+                <li class=""><a href="#" class="text-decoration-none">Dashboard</a></li>
+                <li class=""><a href="#" class="text-decoration-none">Dashboard</a></li>
+            </ul>
+            <hr class="h-color mx-3">
+            <div class="content">
+                
+            </div>
         </div>
-    </div>
-    <script src="home.js"></script>
+    </div>    -->
+
+    <!-- <footer class="fixed-bottom bg-secondary pt-3">
+        <p class="text-center " style="color: white;">Create by Group 7</p>
+    </footer>   -->
 </body>
 </html>
