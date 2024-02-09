@@ -42,71 +42,38 @@
                                 <img src="img/logout.png" class="setting-icon">
                                 <a href="#">Logout <img src="img/arrow.png" width="10px"></a>
                             </div>
-                    <!-- ============================Setting ================================ -->
+                            <!-- ============================Setting ================================ -->
                         </div>
 
                     </div>
                     <!--================================== Profile==================================================== -->
-                <!-- </ul> -->
+                
             </div>
             <!--============================== MENU=============================== -->     
         </div>
       
     </nav>
     <!-- Posting- -->
-    <form action="">
-        <div class="container-sm  " style="height: 100% ;padding-top: 14px; justify-content: center; margin-top: 50px;">
-                <div class="search-box">
-                    <img src="img/search.png" style="width: 20px;">
-                    <input class="bg-secondary " type="text" placeholder=" Search" style="border-radius: 20px;">
-                </div>
-            <div class="write-post-container ">
-                <div class="user-profile">
-                    <img src="img/user.jpg" alt="" >
-                    <div>
-                        <p>Nuttawut Wattanamala</p>
-                    </div>
-                </div>
-                <div class="post-input-container">
-                    <textarea rows="3" placeholder="What's on your mind?"></textarea>
-                </div>
-            </div>
-               
-    </form>
+        <div class="container-sm" style="height: 100% ;padding-top: 14px; justify-content: center; margin-top: 50px;">
+                    
+        
+                    {{>posts}}
+        </div> 
+
 
         <!-- Posting- -->
 
         <!-------------------------------------- POST --------------------------------------------------------------------- -->
-        <div class="post-container">
-            <div class="port-row" style="display: flex; justify-content: space-between;">
-                <div class="user-profile">
-                    <img src="img/user.jpg" alt="" >
-                    <div>
-                        <p>Nattawut Wattanamala</p>
-                        <span style="font-size: 13px; color: #9a9a9a;">June 21 2024, 18:12 pm</span>
-                    </div>
-                </div>              
-                <a style="color: #9a9a9a;" href="#"><i class="fa-solid fa-ellipsis-v"></i></a>     
-            </div>
-
-            <p class="post-text">Welcome to my <span>@Project</span> Thankyou. <a href="#">#ProjectCollect</a></p>     
-            <img src="img/feed-image-1.png" class="post-img">
-
-            <div class="post-row" style="display: flex; align-items: center; justify-content: space-between;">
-                <div class="activity-icons" style="display: flex; margin-top: 10px;">
-                    <div><img src="img/like-blue.png" style="margin-bottom: 7px;"> 120</div>
-                    <div><img src="img/comments.png"> 45</div>
-                </div>
-            </div>
-        </div>     
-  
- 
+        
+            
+        
+        
         <!-- ---------------------------POST2------------------------------------------------------------------------ -->
 
 
     <footer class="pt-3 " >
         <p class="text-center" style="color: white; font-size: 12px; color: #9a9a9a;">Create This Web-Project by Group 7</p>
     </footer>  
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
