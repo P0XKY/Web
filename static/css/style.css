@@ -1,102 +1,132 @@
-body {
-    font-family: Arial, sans-serif;
+*{
     margin: 0;
     padding: 0;
-    background-color: #fdfdfd;
+    font-family: 'poppin', sans-serif;
+}
+.search-box {
+    margin-top: 5px;
+    border-radius: 20px; 
+    margin-right: 20px;
 }
 
-/* ต้องบนทั้งหมด */
-.head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px; 
-    background-color: rgb(155, 86, 245);
-    color: #fff;
+.search-box input{
+    padding-left: 20px;
+    color: white;
 }
-.logo {
-    font-family: Impact, fantasy;
-    font-size: 50px;
-}
+.write-post-container{
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
 
-.menu {
-    display: flex;
-}
-.menu ul {
-    list-style-type: none;
-    display: flex;
-    gap: 60px; 
-    text-decoration: none;
-    font-size: 20px;
-}
-.menu ul li a {
-    
-    text-decoration: none; /* ลบเส้นใต้ของลิงก์ */
-}
-.profile {
-    align-items: center;
-}
-.profile img {
-    width: 30px;
-    height: 30px;
-    border-radius: 20%;
-    margin-right: 5px;
-}
-.menu img {
-    width: 30px;
-    height: 30px;
-}
-/* ถึงนี่ */
-
-.search {
-    text-align: center;
-    margin-top: 50px;
-}
-.search input {
-    width: 500px;
-    height: 30px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    columns: #626262;
     
 }
 
-.container {
-    max-width: 1000px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.user-profile{
+    display: flex;
+    align-items: center;
 }
 
-.post {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
+.user-profile img{
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
-.post p {
-    /* border: 1px solid red; */
+
+.user-profile p{
+    margin-bottom: -5px;
+    font-weight: 500;
+    color: #626262;
+}
+.user-profile small{
+    font-size: 12px;
+}
+.post-input-container{
+    padding-left: 55px;
+    padding-top: 20px;
+}
+.post-input-container textarea{
     width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    resize: none;
 }
-  
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20%; /* ใส่วงกลมให้รูปโปรไฟล์ */
-}
-
-#post-container {
-    margin-top: 0px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-textarea {
-    width: 100%;
-    padding: 8px;
+.add-post-links{
+    display: flex;
     margin-bottom: 10px;
 }
+.add-post-links a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #626262;
+    margin-right: 30px;
+    font-size: 13px;
+}
+.add-post-links a img{
+    width: 20px;
+    margin-right: 10px;
+}
+
+.post-container{
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+    margin: 20px 0 ;
+}
+.post-text{
+    color: #9a9a9a;
+    margin: 15px 0;
+    font-size: 15px;
+}
+.post-text span{
+    color: #626262;
+    font-weight: 500;
+}
+.post-text a{
+    color: #1876f2;
+    text-decoration: none;
+}
+.post-img{
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.activity-icons div img{
+    width: 18px;
+    margin-right: 10px;
+}
+.activity-icons div{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.post-profile-icon{
+    display: flex;
+    align-items: center;
+
+}
+.post-profile-icon img{
+    width: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* #side_nav{
+    background: #000;
+    min-width: 250px;
+    max-width: 250px;
+}
+.content{
+    min-height: 100vh;
+    width: 100%;
+}
+
+hr.h-color{
+    background: #eee;
+} */
