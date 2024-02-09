@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dbConection = require('../database')
 const cookieSession = require('cookie-session');
 const {body,validationResult} = require('express-validator');
+const md5 = require('md5');
 
 router.use(cookieSession({
     name: 'session',
@@ -46,10 +47,10 @@ router.post('/re',ifLoggedIn,[
     const validaton_result = validationResult(req);
     const { user_id } =req.body;
     const { user_name } =req.body;
-    const { user_passwork } =req.body;
+    const { user_password } =req.body;
     const { user_email } =req.body;
     const sql = 'INSERT INTO users VALUES (?,?,?,?)';
-    dbConection.query(sql,[user_id,user_name,user_passwork,user_email],(err,results)=>{
+    dbConection.query(sql,[user_id,user_name,md5(user_password),user_email],(err,results)=>{
         if(err){
             return res.status(500).json({error: err.message});
         }else{

@@ -23,7 +23,11 @@
             </div>
 
             <div class="profile">
-                    Username:{{ user_name }} <br>Email:{{ user_email }} <!-- Replace with actual image path -->
+                    {{#data}}
+                        USER NAME:{{user_name}}
+                        Email:{{user_email}}
+                    {{/data}}
+                     <!-- Replace with actual image path -->
             </div>
                 <!-- ต้องแก้ -->
         </div>

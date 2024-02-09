@@ -25,6 +25,8 @@ const memberRouters = require('./router/member');
 
 // connect database
 const dbConection = require('./database');
+
+
 const { error, time } = require('console');
 const { Result } = require('express-validator');
 
@@ -35,7 +37,7 @@ app.use('/member',memberRouters);
 
 // Home
 app.get('/', async (req,res)=>{
-    const sql = 'SELECT * FROM post'
+    const sql = 'SELECT * FROM posts'
     dbConection.query(sql,(error,result,fields)=>{
         if(error){
             console.error(error);
