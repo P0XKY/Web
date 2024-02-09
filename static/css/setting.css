@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+#profile-section {
+    border: 2px solid rgb(245, 233, 233);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(2, 1, 1, 0.1);
+    height: 400; 
+    max-width: 600px; 
+    margin: 50px auto; 
+}
+
+#profile-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+
+.name {
+    margin-left: 20px; /* ปรับมาร์จินที่ด้านซ้าย */
+}
+
+#profile-form {
+    margin-top: 20px; /* ปรับระยะห่างด้านบน */
+}
+
+.user {
+    margin-top: 10px;
+}
+
+#newUsername {
+    border-radius: 5px;
+}
+
+.pass {
+    margin-top: 10px;
+}
+
+#Password {
+    margin-left: 12px;
+    border-radius: 5px;
+}
+
+.pass-new {
+    margin-top: 10px;
+}
+
+#newPassword {
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.profile {
+    margin-top: 10px;
+}
+
+.profile input {
+    display: none;
+}
+
+.profile button {
+    color: #fff;
+    border-radius: 15px;
+    background-color: rgb(128, 0, 248);
+    padding: 8px 16px;
+    border: none;
+}
+
+.save button {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: rgb(128, 0, 248);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+}
+
+button:hover {
+    background-color: #6842af;
+}
+
+img {
+    border-radius: 20%;
+    margin-right: 20px; /* ปรับมาร์จินที่ด้านขวา */
+}
+
+h2 {
+    color: #333;
+}
