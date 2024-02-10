@@ -114,7 +114,7 @@ router.get('/setting/:id',(req,res)=>{
 
 router.get('/myposts/:id',(req,res)=>{
     
-    const sqlmyposts = 'SELECT * FROM posts WHERE user_id = '+req.params['id']
+    const sqlmyposts = 'SELECT users.user_name , posts.section,posts.content,posts.times FROM posts INNER JOIN users ON users.user_id = posts.user_id WHERE posts.user_id = '+req.params['id']
     dbConection.query(sqlmyposts,(error,results,fields) => {
         if(error)
            console.error(error); 
