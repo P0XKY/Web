@@ -87,6 +87,10 @@ body{
     resize: none;
     color: var(--text-color);
 }
+.upload p {
+    margin-left: 100px;
+}
+
 .add-post-links{
     display: flex;
     margin-bottom: 10px;

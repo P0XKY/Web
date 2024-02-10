@@ -1,10 +1,10 @@
 {{#user_name}}
     <form action="">
         
-                <div class="search-box" style="display: flex; align-items: center;">
-                    <i class='bx bx-search-alt-2 bx-sm' style='color:#777474' ></i>
-                    <input class="bg-secondary " type="text" placeholder=" Search" style="border-radius: 20px;">
-                </div>
+            <div class="search-box" style="display: flex; align-items: center;">
+                <i class='bx bx-search-alt-2 bx-sm' style='color:#777474' ></i>
+                <input class="bg-secondary " type="text" placeholder=" Search" style="border-radius: 20px;">
+            </div>
             <div class="write-post-container ">
                 <div class="user-profile">
                     <img src="img/user.jpg" alt="" >
@@ -15,7 +15,16 @@
                 <div class="post-input-container">
                     <textarea rows="3" placeholder="What's on your mind?"></textarea>
                 </div>
+            
+                <div class="upload">
+                    <input type="file" id="pdf-upload" accept=".pdf">
+                    <input type="file" id="jpg-upload" accept=".jpg, .jpeg">
+                </div>
+            
+                <div class ="post">
+                    <button type="button" onclick="submitPost()">โพสต์</button>
+                </div>
             </div>
-               
     </form>
+  
 {{/user_name}}

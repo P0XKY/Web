@@ -35,6 +35,16 @@
                 darkBtn.classList.toggle("dark-btn-on");
                 document.body.classList.toggle("dark-theme");
             }
+            
+            function submitPost() {
+            var pdfFileInput = document.getElementById('pdf-upload');
+            var jpgFileInput = document.getElementById('jpg-upload');    
+                if (pdfFileInput.files.length > 0 || jpgFileInput.files.length > 0) {
+                    console.log('Post submitted successfully!');
+                } else {
+                    alert('Please select at least one file to post.');
+                }
+            }
     </script>
 </body>
 </html>
