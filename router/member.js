@@ -42,6 +42,7 @@ router.post('/verify',(req,res)=>{
                 res.cookie('user_email',user_email,{maxAge: 600000})
                 res.locals.user = results[0];
                 res.render('member/home',{data: res.locals.user,posts: res.locals.data})
+                console.log(req.body)
             }  
         }
     });
