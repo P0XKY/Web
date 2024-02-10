@@ -87,8 +87,26 @@ body{
     resize: none;
     color: var(--text-color);
 }
-.upload p {
-    margin-left: 100px;
+.upload {
+    display: flex;
+}
+.upload input {
+    margin-top: 50px;
+    
+}
+.upload h1 {
+    margin-top: 20px;
+    height: 30px;
+    width: 100px;
+    
+    font-size: 20px;
+    margin-left: 10px;
+}
+.post button {
+    margin-top: 20px;
+    border-radius: 10px;
+    height: 40px;
+    width: 100px;
 }
 
 .add-post-links{
