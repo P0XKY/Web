@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mustacheExpress = require('mustache-express')
 const app = express();
 const PORT = 3000;
+const getData = require('./accout')
 
 // connect database
 const dbConection = require('./database');
@@ -35,18 +36,19 @@ const { Result } = require('express-validator');
 // use router
 app.use('/register',registerRouters);
 app.use('/member',memberRouters);
-
+app.use(getData);
 
 // Home
 app.get('/',(req,res)=>{
-    let sql = 'SELECT * FROM posts'
-    dbConection.query(sql,(error,result,fields)=>{
-        if(error){
-            console.error(error);
-        }else{
-            res.render('home/home',{ posts: result });
-        } 
-    });
+    // let sql = 'SELECT * FROM posts'
+    // dbConection.query(sql,(error,result,fields)=>{
+    //     if(error){
+    //         console.error(error);
+    //     }else{
+    //         res.render('home/home',{ posts: result });
+    //     } 
+    // });
+    res.render('home/home',{posts: res.locals.data})
 });
 
 

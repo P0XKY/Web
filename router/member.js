@@ -6,10 +6,11 @@ const cookieSession = require('cookie-session');
 const {body,validationResult} = require('express-validator');
 const cookie = require('cookie-parser');
 const md5 = require('md5');
+const getData = require('../accout')
 
 // use cookie
 router.use(cookie());
-
+router.use(getData);
  
 router.use(bodyParser.urlencoded({ extended: true}));
 router.use(bodyParser.json());
@@ -32,18 +33,18 @@ router.post('/verify',(req,res)=>{
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
             }else{
                 res.cookie('user_name',user_name,{maxAge: 600000})
-                res.render('member/home',{data: results})
+                res.render('member/home',{data: results,posts: res.locals.data})
             }
         }
     });
 });
 
-
+    
 // click home
 router.get('/member',(req,res)=>{
     const username = req.cookies.user_name;
     if (username){
-       res.render('member/home',{user_name:username}) 
+       res.render('member/home',{posts: res.locals.data}) 
     }
     else {
         res.redirect('/member/login')
@@ -80,12 +81,14 @@ router.post('/upload',(req,res)=>{
 
 // Setting
 router.get('/setting',(req,res)=>{
-    res.send('Hello')
+    res.render('member/setting')
     //res.render('upload/upload')
 })
 
 router.get('/post',(req,res)=>{
     
 })
+
+
 
 module.exports = router;

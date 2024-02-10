@@ -11,70 +11,29 @@
     
 </head>
 <body class="bg-dark">      
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" id="allnavbar" style="background: var(--nav-color);">
-        <div class="container-fluid" >
-            <a href="#" class="navbar-brand" style="padding-left: 20px; color: var(--text-color);">Group 7</a>
-                    <!--================================== Profile==================================================== -->
-                    <div class="nav-user-icon nav-item" style="display: flex; align-items: center;" onclick="settingMenuToggle()">
-                        <img style="width: 40px ; border-radius: 50%; cursor: pointer;" src="img/user.jpg">
-                    </div>
+        {{>menulogin}}
 
-                    <!-- ============================Setting ================================ -->
-                    <div class="settings-menu">
-
-                        <div id="dark-btn" >
-                            <span></span>
-                        </div>
-                        <div class="settings-menu-inner">
-                            <div class="user-profile">
-                                <img src="img/user.jpg">
-                                <div>
-                                    <p>Nattawut Wattanamala</p>
-                                    <a href="#">See your profile</a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="setting-links">
-                                <img src="img/setting.png" class="setting-icon">
-                                <a href="#">Setting <img src="img/arrow.png" width="10px"></a>
-                            </div>
-                            <div class="setting-links">
-                                <img src="img/logout.png" class="setting-icon">
-                                <a href="#">Logout <img src="img/arrow.png" width="10px"></a>
-                            </div>
-                            <!-- ============================Setting ================================ -->
-                        </div>
-
-                    </div>
-                    <!--================================== Profile==================================================== -->
-                
-            </div>
-            <!--============================== MENU=============================== -->     
-        </div>
-      
-    </nav>
-    <!-- Posting- -->
-        <div class="container-sm" style="height: 100% ;padding-top: 14px; justify-content: center; margin-top: 50px;">
-                    
-        
+        <div class="container-sm" style="height: 100% ;padding-top: 14px; justify-content: center; margin-top: 50px;"> 
+                    {{! post }}
                     {{>posts}}
         </div> 
 
+        {{>footer}}
 
-        <!-- Posting- -->
-
-        <!-------------------------------------- POST --------------------------------------------------------------------- -->
-        
-            
-        
-        
-        <!-- ---------------------------POST2------------------------------------------------------------------------ -->
-
-
-    <footer class="pt-3 " >
-        <p class="text-center" style="color: white; font-size: 12px; color: #9a9a9a;">Create This Web-Project by Group 7</p>
-    </footer>  
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+            var settingsmenu = document.querySelector(".settings-menu");
+            var darkBtn = document.getElementById("dark-btn");
+            function settingMenuToggle(){
+                settingsmenu.classList.toggle("settings-menu-height")
+            }
+
+
+            darkBtn.onclick = function(){
+                darkBtn.classList.toggle("dark-btn-on");
+                document.body.classList.toggle("dark-theme");
+            }
+    </script>
 </body>
 </html>
