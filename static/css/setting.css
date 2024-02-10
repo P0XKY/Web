@@ -4,6 +4,20 @@ body {
     padding: 0;
 }
 
+:root{
+    --body-color: #efefef;
+    --nav-color: #fff;
+    --bg-color:#fff;
+    --text-color:#000;
+
+}
+.dark-theme{
+    --body-color: #0a0a0a;
+    --nav-color: #000;
+    --bg-color:#000;
+    --text-color:#fff;   
+}
+
 header {
     background-color: #333;
     color: white;
@@ -18,25 +32,33 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px rgba(2, 1, 1, 0.1);
+    box-shadow: 0 0 10px rgba(196, 176, 176, 0.1);
     height: 400; 
     max-width: 600px; 
-    margin: 50px auto; 
+    margin: 100px auto; 
+    background: var(--bg-color);
 }
 
 #profile-section img {
     max-width: 100%;
     height: auto;
     border-radius: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .name {
     margin-left: 20px; /* ปรับมาร์จินที่ด้านซ้าย */
+    color: var(--text-color);
+}
+.name h1 {
+    font-size: 40px;
+    font-family: sans-serif;
+    color: var(--text-color);
 }
 
 #profile-form {
     margin-top: 20px; /* ปรับระยะห่างด้านบน */
+    color: var(--text-color);
 }
 
 .user {
