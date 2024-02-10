@@ -29,9 +29,9 @@ router.get('/login',(req,res)=>{
 
 // member/login
 router.post('/verify',(req,res)=>{
-    const {user_name,user_password} = req.body
-    const sqluser = 'SELECT * FROM users WHERE user_name = ?  and user_password = ? '
-    dbConection.query(sqluser,[user_name,user_password],(err,results)=>{
+    const {user_email,user_password} = req.body
+    const sqluser = 'SELECT * FROM users WHERE user_email = ?  and user_password = ? '
+    dbConection.query(sqluser,[user_email,user_password],(err,results)=>{
         if(err){
             console.log(err)
             res.render('member/login')     
@@ -39,7 +39,7 @@ router.post('/verify',(req,res)=>{
             if(results.length == 0){
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
             }else{
-                res.cookie('user_name',user_name,{maxAge: 600000})
+                res.cookie('user_email',user_email,{maxAge: 600000})
                 res.locals.user = results[0];
                 res.render('member/home',{data: res.locals.user,posts: res.locals.data})
             }  
@@ -52,7 +52,7 @@ router.post('/verify',(req,res)=>{
 
 // click home
 router.get('/member',(req,res)=>{
-    const username = req.cookies.user_name;
+    const username = req.cookies.user_email;
     if (username){
        res.render('member/home',{user_name:username,posts: res.locals.data}) 
     }
