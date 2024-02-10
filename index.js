@@ -40,14 +40,6 @@ app.use(getData);
 
 // Home
 app.get('/',(req,res)=>{
-    // let sql = 'SELECT * FROM posts'
-    // dbConection.query(sql,(error,result,fields)=>{
-    //     if(error){
-    //         console.error(error);
-    //     }else{
-    //         res.render('home/home',{ posts: result });
-    //     } 
-    // });
     res.render('home/home',{posts: res.locals.data})
 });
 

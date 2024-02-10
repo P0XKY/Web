@@ -8,6 +8,8 @@ const cookie = require('cookie-parser');
 const md5 = require('md5');
 const getData = require('../accout')
 
+
+
 // use cookie
 router.use(cookie());
 router.use(getData);
@@ -15,16 +17,20 @@ router.use(getData);
 router.use(bodyParser.urlencoded({ extended: true}));
 router.use(bodyParser.json());
 
+
+
 //  Login.mustache
 router.get('/login',(req,res)=>{
     res.render('member/login')
 });
 
+
+
 // member/login
 router.post('/verify',(req,res)=>{
-    const {user_name,user_password,user_email} = req.body
-    let sql = "SELECT * FROM users WHERE user_name = ?  and user_password = ? "
-    dbConection.query(sql,[user_name,user_password,user_email],(err,results)=>{
+    const {user_name,user_password} = req.body
+    const sqluser = "SELECT * FROM users WHERE user_name = ?  and user_password = ? "
+    dbConection.query(sqluser,[user_name,user_password],(err,results)=>{
         if(err){
             console.log(err)
             res.render('member/login')     
@@ -33,23 +39,29 @@ router.post('/verify',(req,res)=>{
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
             }else{
                 res.cookie('user_name',user_name,{maxAge: 600000})
-                res.render('member/home',{data: results,posts: res.locals.data})
+                res.locals.user = results[0];
+                res.render('member/home',{data: res.locals.user,posts: res.locals.data})
+                console.log(res.locals.user);
             }
         }
     });
 });
 
     
+
+
 // click home
 router.get('/member',(req,res)=>{
     const username = req.cookies.user_name;
     if (username){
-       res.render('member/home',{posts: res.locals.data}) 
+       res.render('member/home',{user_name:username,posts: res.locals.data}) 
     }
     else {
         res.redirect('/member/login')
     } 
 });
+
+
 
 
 // Logout
@@ -60,6 +72,8 @@ router.get('/logout',(req,res)=>{
     }
     res.redirect('/')
 });
+
+
 
 // Upload Post
 router.get('/upload',(req,res)=>{
@@ -79,15 +93,17 @@ router.post('/upload',(req,res)=>{
     });
 });
 
+
+
+
 // Setting
 router.get('/setting',(req,res)=>{
-    res.render('member/setting')
+    res.render('member/setting',{data: res.locals.user});
+    console.log(res.locals.user);
     //res.render('upload/upload')
 })
 
-router.get('/post',(req,res)=>{
-    
-})
+
 
 
 
