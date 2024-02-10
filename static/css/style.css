@@ -24,10 +24,18 @@ body{
 #allnavbar{
     background: var(--nav-color);
 }
+
 .search-box {
-    margin-top: 5px;
+    margin-top: 10px;
     border-radius: 20px; 
     text-align: center;
+}
+
+.search-box input{
+    width: 100%;
+    padding-left: 20px;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .search-box input{

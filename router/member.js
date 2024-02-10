@@ -29,7 +29,7 @@ router.get('/login',(req,res)=>{
 // member/login
 router.post('/verify',(req,res)=>{
     const {user_name,user_password} = req.body
-    const sqluser = "SELECT * FROM users WHERE user_name = ?  and user_password = ? "
+    const sqluser = 'SELECT * FROM users WHERE user_name = ?  and user_password = ? '
     dbConection.query(sqluser,[user_name,user_password],(err,results)=>{
         if(err){
             console.log(err)
@@ -41,8 +41,8 @@ router.post('/verify',(req,res)=>{
                 res.cookie('user_name',user_name,{maxAge: 600000})
                 res.locals.user = results[0];
                 res.render('member/home',{data: res.locals.user,posts: res.locals.data})
-                console.log(res.locals.user);
-            }
+                console.log(req.body);
+            }  
         }
     });
 });
@@ -82,8 +82,8 @@ router.get('/upload',(req,res)=>{
 
 router.post('/upload',(req,res)=>{
     const {user_id , section , Description } = req.body
-    let sql = 'INSERT INTO posts (user_id,section,content) VALUES (?,?,?);'
-    dbConection.query(sql,[user_id , section , Description ],(error,results)=>{
+    const sqlinto = 'INSERT INTO posts (user_id,section,content) VALUES (?,?,?);'
+    dbConection.query(sqlinto,[user_id , section , Description ],(error,results)=>{
         if(err){
             return res.status(500).json({error: err.message});
         }else{
@@ -97,13 +97,15 @@ router.post('/upload',(req,res)=>{
 
 
 // Setting
+
 router.get('/setting',(req,res)=>{
-    res.render('member/setting',{data: res.locals.user});
-    console.log(res.locals.user);
-    //res.render('upload/upload')
+    res.render('member/setting',{datas: res.locals.user});
+    console.log(req.body)
+});
+
+router.get('/test',(req,res)=>{
+    console.log(req.body);
 })
-
-
 
 
 
