@@ -6,18 +6,19 @@ const cookieSession = require('cookie-session');
 const {body,validationResult} = require('express-validator');
 const cookie = require('cookie-parser');
 const md5 = require('md5');
-const getData = require('../accout')
-
+const getDatapost = require('../accout')
+// const getUsers = require('../getUsers')
 
 
 // use cookie
 router.use(cookie());
-router.use(getData);
+router.use(getDatapost);
  
 router.use(bodyParser.urlencoded({ extended: true}));
 router.use(bodyParser.json());
 
 
+// router.use(getUsers);
 
 //  Login.mustache
 router.get('/login',(req,res)=>{
@@ -41,7 +42,6 @@ router.post('/verify',(req,res)=>{
                 res.cookie('user_name',user_name,{maxAge: 600000})
                 res.locals.user = results[0];
                 res.render('member/home',{data: res.locals.user,posts: res.locals.data})
-                console.log(req.body);
             }  
         }
     });
@@ -98,9 +98,30 @@ router.post('/upload',(req,res)=>{
 
 // Setting
 
-router.get('/setting',(req,res)=>{
-    res.render('member/setting',{datas: res.locals.user});
-    console.log(req.body)
+router.get('/setting/:id',(req,res)=>{
+    const sqlset = 'SELECT * FROM posts WHERE user_id = '+req.params['id']
+    dbConection.query(sqlset,(error,results,fields) => {
+        if(error)
+           console.error(error);
+
+        res.render('member/setting',{datas: results});
+    
+        console.log(req.body)
+    });
+});
+
+
+
+router.get('/myposts/:id',(req,res)=>{
+    
+    const sqlmyposts = 'SELECT * FROM posts WHERE user_id = '+req.params['id']
+    dbConection.query(sqlmyposts,(error,results,fields) => {
+        if(error)
+           console.error(error); 
+        
+            res.render('member/mypost',{mypost: results});
+    });
+    
 });
 
 router.get('/test',(req,res)=>{

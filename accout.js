@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 const dbConection = require('./database')
-const getData = (req,res,next) =>{
+const getDatapost = (req,res,next) =>{
     const sqlposts = 'SELECT * FROM posts'
     dbConection.query(sqlposts,(error,result,fields)=>{
     if(error)
@@ -9,4 +9,4 @@ const getData = (req,res,next) =>{
         next();
     });
 }
-module.exports = getData;
+module.exports = getDatapost;

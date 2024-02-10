@@ -13,6 +13,7 @@ const dbConection = require('./database');
 app.set('views',`${__dirname}/static`);
 app.set('view engine','mustache');
 app.engine('mustache',mustacheExpress());
+app.use(express.static('static/css'));
 
 // Config database
 require('dotenv').config();
