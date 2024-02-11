@@ -26,10 +26,13 @@ router.get('/login',(req,res)=>{
 });
 
 
-
+let gloResults = null;
+let userid = null;
+let username
 // member/login
 router.post('/verify',(req,res)=>{
     const {user_email,user_password} = req.body
+    // const user = req.cookie.user_id;
     const sqluser = 'SELECT * FROM users WHERE user_email = ?  and user_password = ? '
     dbConection.query(sqluser,[user_email,user_password],(err,results)=>{
         if(err){
@@ -40,9 +43,10 @@ router.post('/verify',(req,res)=>{
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
             }else{
                 res.cookie('user_email',user_email,{maxAge: 600000})
-                res.locals.user = results[0];
-                res.render('member/home',{data: res.locals.user,posts: res.locals.data})
-                console.log(req.body)
+                gloResults = results;
+                userid = results[0].user_id;
+                username = results[0].user_name;
+                res.render('member/home',{data: gloResults,posts: res.locals.data})         
             }  
         }
     });
@@ -52,7 +56,7 @@ router.post('/verify',(req,res)=>{
 
 
 // click home
-router.get('/member',(req,res)=>{
+router.get('/verify',(req,res)=>{
     const username = req.cookies.user_email;
     if (username){
        res.render('member/home',{user_name:username,posts: res.locals.data}) 
@@ -99,13 +103,13 @@ router.post('/upload',(req,res)=>{
 
 // Setting
 
-router.get('/setting/:id',(req,res)=>{
-    const sqlset = 'SELECT * FROM posts WHERE user_id = '+req.params['id']
+router.get('/verify/setting',(req,res)=>{
+    const sqlset = 'SELECT * FROM users WHERE user_id = '+userid
     dbConection.query(sqlset,(error,results,fields) => {
         if(error)
            console.error(error);
 
-        res.render('member/setting',{datas: results});
+        res.render('member/setting',{datas: results,data: gloResults,datass: userid});
     
         console.log(req.body)
     });
@@ -113,14 +117,13 @@ router.get('/setting/:id',(req,res)=>{
 
 
 
-router.get('/myposts/:id',(req,res)=>{
+router.get('/verify/myposts',(req,res)=>{
     
-    const sqlmyposts = 'SELECT users.user_name , posts.section,posts.content,posts.times FROM posts INNER JOIN users ON users.user_id = posts.user_id WHERE posts.user_id = '+req.params['id']
+    const sqlmyposts = 'SELECT users.user_name , posts.section,posts.content,posts.times FROM posts INNER JOIN users ON users.user_id = posts.user_id WHERE posts.user_id = '+userid
     dbConection.query(sqlmyposts,(error,results,fields) => {
         if(error)
            console.error(error); 
-        
-            res.render('member/mypost',{mypost: results});
+            res.render('member/mypost',{mypost: results,data: gloResults,datass: userid});
     });
     
 });

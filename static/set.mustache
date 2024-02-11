@@ -1,18 +1,18 @@
-
-        <section id="profile-section">
+{{#datas}}
+        <section class="bg-white" id="profile-section" >
            
             <div >
                 <img src="/profile-picture.jpg" alt="Profile Picture">
             </div>
             
 
-            <div class="name">
+            <div class="name text-center">
             <h1>My Profile</h1>
 
-            <h2 id="username">:{{user_name}}</h2>
-            <p>:{{user_email}}</p>
+            <h2 id="username">Username:{{user_name}}</h2>
+            <p>Email:{{user_email}}</p>
     
-            <form id="profile-form">
+            <form post="">
                 <div class="user">
                     <label for="newUsername">New Username:</label>
                     <input type="text" id="newUsername" name="newUsername" required>
@@ -39,3 +39,4 @@
             </form>
             </div>
         </section>
+{{/datas}}
