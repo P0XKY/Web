@@ -1,21 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
-const dbConection = require('../database')
+const dbConection = require('../database');
 const cookieSession = require('cookie-session');
 const {body,validationResult} = require('express-validator');
 const cookie = require('cookie-parser');
 const md5 = require('md5');
-const getDatapost = require('../accout')
-// const getUsers = require('../getUsers')
+const getDatapost = require('../accout');
+const uplaodFile = require('../middleware/upload')
 
-
-// use cookie
 router.use(cookie());
 router.use(getDatapost);
  
-router.use(bodyParser.urlencoded({ extended: true}));
+router.use(bodyParser.urlencoded({ extended: false}));
 router.use(bodyParser.json());
+
+router.use(express.urlencoded({extended: true}));
+router.use(express.json({extended: true}));
+
 
 
 // router.use(getUsers);
@@ -42,7 +44,7 @@ router.post('/verify',(req,res)=>{
             if(results.length == 0){
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
             }else{
-                res.cookie('user_email',user_email,{maxAge: 30000})
+                res.cookie('user_email',user_email,{maxAge: 600000})
                 gloResults = results;
                 userid = results[0].user_id;
                 username = results[0].user_name;
@@ -81,23 +83,36 @@ router.get('/logout',(req,res)=>{
 
 
 // Upload Post
-router.get('/upload',(req,res)=>{
-    res.render('member/upload')
-});
 
-router.post('/upload',(req,res)=>{
-    const {user_id , section , Description } = req.body
-    const sqlinto = 'INSERT INTO posts (user_id,section,content) VALUES (?,?,?);'
-    dbConection.query(sqlinto,[user_id , section , Description ],(error,results)=>{
-        if(err){
-            return res.status(500).json({error: err.message});
+
+router.post('/verify/upload',uplaodFile.array('file',10),(req,res)=>{
+    // if(!req.file){
+    //     return res.status(400).send({msg:'No file uploaded.'});
+    // }
+    
+    const { section , content ,pdf ,img} = req.body
+   
+    // const fileName = file.originalname;
+    // const fileData = file.buffer;
+
+    
+    
+    const sqlinto = 'INSERT INTO posts (post_id,user_id,section,content,times,img,pdf) VALUES (?,?,?,?,?,?,?);'
+    dbConection.query(sqlinto,['',userid ,section , content ,'',pdf,img],(error,results)=>{
+        if(error){
+            return res.status(500).json({error: error.message});
         }else{
-            res.json(results)
-            res.render('member/home',{msg: 'Succeed'})
+            //return res.render('member/home',{msg: 'Succeed'})
+             res.send(req.files);
+            //res.redirect('/member/verify')
         }
     });
+   
+    // console.log(">>",fileName)
+    // console.log(">>>",fileData)
 });
 
+// router.post('/upload',upload.single('file'))
 
 
 
