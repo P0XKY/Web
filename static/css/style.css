@@ -8,13 +8,15 @@
     --nav-color: #fff;
     --bg-color:#fff;
     --text-color:#000;
+    --bgsearch-color:#fff;
 
 }
 .dark-theme{
     --body-color: #0a0a0a;
     --nav-color: #000;
     --bg-color:#000;
-    --text-color:#fff;   
+    --text-color:#fff;  
+    --bgsearch-color:#808080; 
 }
 body{
     background: var(--bg-color);
@@ -24,25 +26,12 @@ body{
 #allnavbar{
     background: var(--nav-color);
 }
-
-.search-box {
-    margin-top: 10px;
-    border-radius: 20px; 
-    text-align: center;
+.tapsearch input{
+    color: var(--text-color);
+    background: var(--bgsearch-color);
 }
-
-.search-box input{
-    width: 100%;
-    padding-left: 20px;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.search-box input{
-    width: 70%;
-    padding-left: 20px;
-    color: white;
-    margin-bottom: 20px;
+.tapsearch ::placeholder{
+    color: var(--text-color);    
 }
 .write-post-container{
     width: 100%;
