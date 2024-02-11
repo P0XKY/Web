@@ -1,0 +1,20 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        let imagesPreview = function(input,placeToInsertImagesPreview){
+            if (input.files){
+                let filesAmount = input.files.length;
+                for(let i = 0;i < filesAmount; i++){
+                    let reader = new FileReader();
+                    reader.onload = function(event){
+                        $($.parseHTML("<img>")).attr("src",event.target.result).appendTo(placeToInsertImagesPreview)
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        }
+        $('#input-files').on('change',function(){
+            imagesPreview(this,"div.preview-images")
+        })
+    });
+</script>
