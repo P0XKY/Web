@@ -28,7 +28,7 @@ router.get('/login',(req,res)=>{
 
 let gloResults = null;
 let userid = null;
-let username
+let username = null;
 // member/login
 router.post('/verify',(req,res)=>{
     const {user_email,user_password} = req.body
@@ -42,11 +42,11 @@ router.post('/verify',(req,res)=>{
             if(results.length == 0){
                 res.render('member/login',{msg: '!!!Wrong Username or Password!!!'})
             }else{
-                res.cookie('user_email',user_email,{maxAge: 600000})
+                res.cookie('user_email',user_email,{maxAge: 30000})
                 gloResults = results;
                 userid = results[0].user_id;
                 username = results[0].user_name;
-                res.render('member/home',{data: gloResults,posts: res.locals.data})         
+                res.render('member/home',{data: gloResults,posts: res.locals.data})
             }  
         }
     });
@@ -71,7 +71,7 @@ router.get('/verify',(req,res)=>{
 
 // Logout
 router.get('/logout',(req,res)=>{
-    const username = req.cookies.user_name;
+    const username = req.cookies.user_email;
     if (username){
         res.clearCookie('username')
     }
@@ -109,7 +109,7 @@ router.get('/verify/setting',(req,res)=>{
         if(error)
            console.error(error);
 
-        res.render('member/setting',{datas: results,data: gloResults,datass: userid});
+        res.render('member/setting',{datas: results,data: gloResults});
     
         console.log(req.body)
     });
@@ -129,7 +129,13 @@ router.get('/verify/myposts',(req,res)=>{
 });
 
 router.get('/test',(req,res)=>{
-    console.log(req.body);
+     res.render('test',{data: gloResults})
+    // console.log(userid);
+    // console.log(gloResults);
+    // console.log(username);
+    // gloResults.forEach(result => {
+    //     console.log(result);
+    // });
 })
 
 
