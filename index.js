@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname,'public')))
 // router
 const registerRouters = require('./router/register');
 const memberRouters = require('./router/member');
-
+const resetpassRouters = require('./router/resetpass');
 
 
 
@@ -38,6 +38,7 @@ const { Result } = require('express-validator');
 // use router
 app.use('/register',registerRouters);
 app.use('/member',memberRouters);
+app.use('/reset',resetpassRouters);
 app.use(getData);
 
 // Home
