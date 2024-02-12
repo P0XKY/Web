@@ -1,42 +1,47 @@
 {{#datas}}
-        <section class="bg-white" id="profile-section" >
-           
-            <div >
-                <img src="/profile-picture.jpg" alt="Profile Picture">
-            </div>
+    <section class="bg-white" id="profile-section">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
             
-
-            <div class="name text-center">
-            <h1>My Profile</h1>
-
-            <h2 id="username">Username:{{user_name}}</h2>
-            <p>Email:{{user_email}}</p>
-    
-            <form post="">
-                <div class="user">
-                    <label for="newUsername">New Username:</label>
-                    <input type="text" id="newUsername" name="newUsername" required>
-                </div>
-                
-                <div class="pass">
-                    <label for="Password">Old Password:</label>
-                    <input type="password" id="Password" name="Password" required>
-                </div>
-
-                <div class="pass-new">
-                    <label for="newPassword">New Password:</label>
-                    <input type="password" id="newPassword" name="newPassword" required>
-                </div>
-                <div class="profile">
-                    <label for="newProfilePicture">New Profile Picture:</label>
-                    <input type="file" id="newProfilePicture" name="newProfilePicture" accept=".jpg">
-                    <button type="button" onclick="document.getElementById('newProfilePicture').click()">Choose jpg</button>
-                    <p id="selectedFileName"></p>
-                </div>
-                <div class="save">
-                    <button type="button" onclick="updateProfile()">Update Profile</button>
-                </div>
-            </form>
+            <div class="text-center">
+                    <h1>My Profile</h1>
             </div>
-        </section>
+                <div class="col-md-6 d-flex justify-content-center text-center">
+                    <img src="https://cdn.icon-icons.com/icons2/3066/PNG/96/user_person_profile_avatar_icon_190943.png" class="img-fluid mb-4 rounded">
+                </div>
+            
+                <div class="col-md-6">
+                    <div class="name">
+                        <h3 id="username">Username:{{user_name}}</h3>
+                        <p>Email:{{user_email}}</p>
+                    </div>
+                        <form method="post" class="mt-4">
+                            <div class="mb-3">
+                                <label for="newUsername" class="form-label">New Username:</label>
+                                <input type="text" id="newUsername" name="newUsername" class="form-control" required>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label for="Password" class="form-label">Old Password:</label>
+                                <input type="password" id="Password" name="Password" class="form-control" required>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">New Password:</label>
+                                <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label for="newProfilePicture" class="form-label">New Profile Picture:</label>
+                                <input type="file" id="newProfilePicture" name="newProfilePicture" class="form-control" accept=".jpg">
+                            </div>
+                
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-primary" onclick="updateProfile()">Update Profile</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {{/datas}}
