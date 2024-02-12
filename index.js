@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 
 let root_path = path.resolve(__dirname,'static')
 app.use(express.static(root_path));
+app.use(express.static(path.join(__dirname,'public')))
 
 // router
 const registerRouters = require('./router/register');

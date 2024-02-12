@@ -12,7 +12,7 @@ const uplaodFile = require('../middleware/upload')
 router.use(cookie());
 router.use(getDatapost);
  
-router.use(bodyParser.urlencoded({ extended: false}));
+router.use(bodyParser.urlencoded({ extended: true}));
 router.use(bodyParser.json());
 
 router.use(express.urlencoded({extended: true}));
@@ -86,30 +86,39 @@ router.get('/logout',(req,res)=>{
 
 
 router.post('/verify/upload',uplaodFile.array('file',10),(req,res)=>{
-    // if(!req.file){
-    //     return res.status(400).send({msg:'No file uploaded.'});
-    // }
-    
-    const { section , content ,pdf ,img} = req.body
-   
-    // const fileName = file.originalname;
-    // const fileData = file.buffer;
-
-    
-    
-    const sqlinto = 'INSERT INTO posts (post_id,user_id,section,content,times,img,pdf) VALUES (?,?,?,?,?,?,?);'
-    dbConection.query(sqlinto,['',userid ,section , content ,'',pdf,img],(error,results)=>{
+    //  if(!req.file){
+    //      return res.status(400).send({msg:'No file uploaded.'});
+    //  }
+    const {content} = req.body
+    const sqlinto = 'INSERT INTO posts (post_id,user_id,content,times,pdf,img) VALUES (?,?,?,?,?,?);'
+    dbConection.query(sqlinto,['',userid , content ,'',req.files[0].filename,req.files[1].filename],(error,results)=>{
         if(error){
             return res.status(500).json({error: error.message});
         }else{
             //return res.render('member/home',{msg: 'Succeed'})
-             res.send(req.files);
+            // console.log(req.files);
+            // console.log(">>",fileName)
+            // console.log(">>>",fileData)
             //res.redirect('/member/verify')
+            var filename = req.files[0].filename;
+            res.status(200).json({
+                code:200,
+                message: "success",
+                results:{
+                    purename: filename,
+                    fullpath: "http://localhost:3000/upload/img/" + filename
+                }
+            })
+            //req.files.forEach(file => {
+                console.log(req.files[0].filename); // ชื่อของไฟล์
+                console.log(req.files[1].filename); // ประเภทของไฟล์
+                //console.log(file.size); // ขนาดของไฟล์
+            //});
+            
         }
     });
    
-    // console.log(">>",fileName)
-    // console.log(">>>",fileData)
+    
 });
 
 // router.post('/upload',upload.single('file'))
@@ -126,7 +135,7 @@ router.get('/verify/setting',(req,res)=>{
 
         res.render('member/setting',{datas: results,data: gloResults});
     
-        console.log(req.body)
+
     });
 });
 
@@ -134,7 +143,7 @@ router.get('/verify/setting',(req,res)=>{
 
 router.get('/verify/myposts',(req,res)=>{
     
-    const sqlmyposts = 'SELECT users.user_name , posts.section,posts.content,posts.times FROM posts INNER JOIN users ON users.user_id = posts.user_id WHERE posts.user_id = '+userid
+    const sqlmyposts = 'SELECT users.user_name ,posts.content,posts.times,posts.img,posts.pdf FROM posts INNER JOIN users ON users.user_id = posts.user_id WHERE posts.user_id ='+userid
     dbConection.query(sqlmyposts,(error,results,fields) => {
         if(error)
            console.error(error); 
