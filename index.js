@@ -6,8 +6,7 @@ const app = express();
 const PORT = 3000;
 const getDatapost = require('./accout')
 
-// connect database
-const dbConection = require('./database');
+
 
 // Mustache
 app.set('views',`${__dirname}/static`);
@@ -29,18 +28,15 @@ app.use(express.static(path.join(__dirname,'public')))
 const registerRouters = require('./router/register');
 const memberRouters = require('./router/member');
 const resetpassRouters = require('./router/resetpass');
-const commentRouter = require('./router/comment');
 
 
 
-const { error, time } = require('console');
-const { Result } = require('express-validator');
+
 
 // use router
 app.use('/register',registerRouters);
 app.use('/member',memberRouters);
 app.use('/reset',resetpassRouters);
-app.use('/comment',commentRouter);
 app.use(getDatapost);
 
 // Home
