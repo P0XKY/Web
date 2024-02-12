@@ -36,7 +36,7 @@ router.post('/verify',(req,res)=>{
     const {user_email,user_password} = req.body
     // const user = req.cookie.user_id;
     const sqluser = 'SELECT * FROM users WHERE user_email = ?  and user_password = ? '
-    dbConection.query(sqluser,[user_email,user_password],(err,results)=>{
+    dbConection.query(sqluser,[user_email,md5(user_password)],(err,results)=>{
         if(err){
             console.log(err)
             res.render('member/login')     
@@ -86,42 +86,22 @@ router.get('/logout',(req,res)=>{
 
 
 router.post('/verify/upload',uplaodFile.array('file',10),(req,res)=>{
-    //  if(!req.file){
-    //      return res.status(400).send({msg:'No file uploaded.'});
-    //  }
+    //   if(!req.file){
+    //       return res.status(400).send({msg:'No file uploaded.'});
+    //   }
     const {content} = req.body
     const sqlinto = 'INSERT INTO posts (post_id,user_id,content,times,pdf,img) VALUES (?,?,?,?,?,?);'
     dbConection.query(sqlinto,['',userid , content ,'',req.files[0].filename,req.files[1].filename],(error,results)=>{
         if(error){
             return res.status(500).json({error: error.message});
         }else{
-            //return res.render('member/home',{msg: 'Succeed'})
-            // console.log(req.files);
-            // console.log(">>",fileName)
-            // console.log(">>>",fileData)
-            //res.redirect('/member/verify')
-            var filename = req.files[0].filename;
-            res.status(200).json({
-                code:200,
-                message: "success",
-                results:{
-                    purename: filename,
-                    fullpath: "http://localhost:3000/upload/img/" + filename
-                }
-            })
-            //req.files.forEach(file => {
-                console.log(req.files[0].filename); // ชื่อของไฟล์
-                console.log(req.files[1].filename); // ประเภทของไฟล์
-                //console.log(file.size); // ขนาดของไฟล์
-            //});
-            
+            res.redirect('/member/verify')
         }
     });
    
     
 });
 
-// router.post('/upload',upload.single('file'))
 
 
 
