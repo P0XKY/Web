@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mustacheExpress = require('mustache-express')
 const app = express();
 const PORT = 3000;
-const getData = require('./accout')
+const getDatapost = require('./accout')
 
 // connect database
 const dbConection = require('./database');
@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname,'public')))
 const registerRouters = require('./router/register');
 const memberRouters = require('./router/member');
 const resetpassRouters = require('./router/resetpass');
+const commentRouter = require('./router/comment');
 
 
 
@@ -39,7 +40,8 @@ const { Result } = require('express-validator');
 app.use('/register',registerRouters);
 app.use('/member',memberRouters);
 app.use('/reset',resetpassRouters);
-app.use(getData);
+app.use('/comment',commentRouter);
+app.use(getDatapost);
 
 // Home
 app.get('/',(req,res)=>{
