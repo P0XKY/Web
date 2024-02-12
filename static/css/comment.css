@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+:root{
+    --body-color: #efefef;
+    --nav-color: #fff;
+    --bg-color:#fff;
+    --text-color:#000;
+
+}
+.dark-theme{
+    --body-color: #0a0a0a;
+    --nav-color: #000;
+    --bg-color:#000;
+    --text-color:#fff;   
+}
+/* .navbar a{
+    color: var(--text-color);
+} */
+.settings-menu-height{
+    max-height: 450px;    
+}
+.user-profile a{
+    font-size: 12px;
+    color: #1876f2;
+    text-decoration: none;
+}
+.settings-menu-inner{
+    padding: 20px;
+    background: var(--bg-color);
+}
+.settings-menu-inner p{
+    color: var(--text-color);    
+}
+.settings-menu hr{
+    border: 0;
+    height: 1px;
+    background: #9a9a9a;
+    margin: 15px 0;
+}
+.setting-links{
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+
+}
+.setting-links .setting-icon{
+    width: 38px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.setting-links a{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #626262;
+
+}
+
+#dark-btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ccc;
+    width: 45px;
+    border-radius: 15px;
+    padding: 2px 3px;
+    cursor: pointer;
+    display: flex;
+    transition: padding-left 0.5s, background 0.5s;
+}
+
+#dark-btn span{
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+}
+#dark-btn.dark-btn-on{
+    padding-left: 23px;
+    background: #000;
+}
+
+.post{
+    justify-content: center;
+    background: var(--bg-color);
+    padding-top: 20px;
+    height: 100%;
+}
+.menu a{
+    text-decoration: none;
+    margin-left: 12px;
+    color: #fff;
+    font-size: 16px;
+    justify-content: flex-end;    
+}
+.menu{
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+
+}
+.menu li a{
+    justify-content: flex-end;       
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppin', sans-serif;
+}
+
+
+.post textarea{
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    color: #333333;
+}
+.user{
+    align-items: center;    
+}
+.user img{
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.user p{
+    color: var(--text-color);
+}
+
+.buttom{
+    justify-content: end;
+    border-radius: 15px;
+    display: flex;
+}
+.buttom button{
+    padding: 10px;
+    border-radius: 15px;    
+}
+
+/* setting */
+.settings-menu{
+    
+    position: absolute;
+    width: 90%;
+    max-width: 350px;
+    /* height: 500px; */
+    
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    top: 108%;
+    right: 1%;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.settings-menu-height{
+    max-height: 450px;    
+}
+.user-profile a{
+    font-size: 12px;
+    color: #1876f2;
+    text-decoration: none;
+}
+.settings-menu-inner{
+    padding: 20px;
+    background: var(--bg-color);
+}
+.settings-menu-inner p{
+    color: var(--text-color);    
+}
+.settings-menu hr{
+    border: 0;
+    height: 1px;
+    background: #9a9a9a;
+    margin: 15px 0;
+}
+.setting-links{
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+
+}
+.setting-links .setting-icon{
+    width: 38px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.setting-links a{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #626262;
+
+}
+
+#dark-btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ccc;
+    width: 45px;
+    border-radius: 15px;
+    padding: 2px 3px;
+    cursor: pointer;
+    display: flex;
+    transition: padding-left 0.5s, background 0.5s;
+}
+.user-profile{
+    display: flex;
+    align-items: center;
+
+}
+
+.user-profile img{
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-profile p{
+    margin-bottom: -5px;
+    font-weight: 500;
+
+}
+#dark-btn span{
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+}
+#dark-btn.dark-btn-on{
+    padding-left: 23px;
+    background: #000;
+}
